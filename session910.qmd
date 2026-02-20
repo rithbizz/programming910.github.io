@@ -1,0 +1,1420 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: true
+    transition: fade
+    font-family: 'Trebuchet MS'
+    scrollable: true
+---
+
+<style>
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  color: #2980b9;
+}
+.reveal {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+</style>
+
+<div style="text-align:center; margin-top: 40px; line-height: 1.4;">
+
+  <img src="https://pelprek.sgp1.digitaloceanspaces.com/banner/3489/148825024520275.png" alt="PPIU Logo" style="width: 400px; margin-bottom: 20px;">
+
+  <h1 style="font-size: 3em; font-weight: 700; color: #2980b9; margin-bottom: 10px;">
+    Programming Language I
+  </h1>
+
+  <h2 style="font-size: 1.6em; font-weight: 500; color: #555;">
+    Conditional Statements: if, elif, else
+  </h2>
+
+  <div style="border-bottom: 4px solid #e74c3c; width: 45%; margin: 18px auto;"></div>
+  <h3 style="margin-top: 25px; font-weight: 700; color: #050E3C">
+    By: MIN Sothearith
+  </h3>
+
+  <h4 style="font-weight: 700; color: #666;">
+    Phnom Penh International University
+  </h4>
+
+</div>
+
+## Welcome Back! 🎉
+
+<div style="text-align:center; margin-top: 40px;">
+  <h3 style="color: #2980b9;">Teaching Your Program to Make Decisions</h3>
+
+  <p style="font-size: 1.4em; margin-top: 50px;">
+    Today we learn <strong>if</strong>, <strong>elif</strong>, and <strong>else</strong> — the foundation of all program logic! 🚀
+  </p>
+</div>
+
+::: {.callout-note}
+## 💡 Why It Matters
+Every useful program needs to make decisions. "If the password is correct, log in. Otherwise, show an error." This is conditional logic!
+:::
+
+## Today's Plan
+
+**Conditional Statements — 3 Hours:**
+
+1. **Part 1** — `if` Statement: Run code only when a condition is True
+2. **Part 2** — `else` Statement: What happens when the condition is False
+3. **Part 3** — `elif` Statement: Checking multiple conditions in order
+4. **Part 4** — Nested `if`: Conditions inside conditions
+5. **Part 5** — Combining Conditions with `and` / `or`
+6. **Part 6** — Practice Projects & Challenges
+
+::: {.callout-tip}
+**⏱️ Time:** ~3 hours | **📝 Goal:** Write programs that think and decide!
+:::
+
+## Learning Objectives
+
+**By the end of this class, you will:**
+
+- Understand what conditional statements are and why we need them
+- Write `if` statements to execute code conditionally
+- Use `else` to handle the alternative case
+- Use `elif` to handle multiple conditions
+- Nest conditions inside each other
+- Combine conditions using `and` / `or`
+- Build real mini-programs that make decisions
+
+::: {.callout-important}
+## 🎯 Hands-On Learning
+Every concept comes with live examples and practice exercises you will write yourself!
+:::
+
+---
+
+# Part 1: The `if` Statement
+
+## What is a Conditional Statement?
+
+::: {style="text-align:center; margin-top: 30px;"}
+### A **conditional statement** tells Python: *"Only do this if something is true"* {style="color: #2980b9; font-size: 1.4em;"}
+:::
+
+**Real-life examples of conditions:**
+
+- **If** it is raining → bring an umbrella
+- **If** the score is above 50 → you pass
+- **If** the password is correct → allow login
+
+```python
+# Without conditions, ALL code always runs
+print("Hello!")         # This always runs
+
+# With conditions, code runs ONLY when True
+age = 20
+if age >= 18:
+    print("You are an adult.")   # Only runs if age >= 18
+```
+
+::: {.callout-note}
+## 💡 Key Idea
+Conditional statements let your program respond differently to different situations.
+:::
+
+## Syntax of the `if` Statement
+
+**The structure of an `if` statement:**
+
+```python
+if condition:
+    # code to run when condition is True
+    # this block is INDENTED (4 spaces or 1 tab)
+```
+
+**Rules to remember:**
+
+- The condition is followed by a **colon** `:`
+- The code inside must be **indented** (press Tab or 4 spaces)
+- Indented code is called the **body** or **block**
+
+```python
+temperature = 35
+
+if temperature > 30:
+    print("It is hot today!")
+    print("Stay hydrated.")
+
+print("This always runs.")   # Not indented = outside the if
+```
+
+::: {.callout-warning}
+## ⚠️ Indentation is REQUIRED
+Python uses indentation to know what belongs inside the `if`. Missing or wrong indentation causes an error!
+:::
+
+## Indentation: The Most Important Rule
+
+```python
+# ✅ CORRECT — indented with 4 spaces
+score = 85
+if score >= 50:
+    print("You passed!")   # 4 spaces before print
+
+# ❌ WRONG — no indentation → IndentationError
+if score >= 50:
+print("You passed!")       # ERROR! Must be indented
+
+# ❌ WRONG — inconsistent indentation
+if score >= 50:
+  print("You passed!")     # 2 spaces
+    print("Great job!")    # 4 spaces → ERROR!
+```
+
+::: {.callout-important}
+## 🎯 Golden Rule
+**Everything inside an `if` block must have the SAME indentation level.**
+Use 4 spaces consistently (or Tab — but not both).
+:::
+
+## How Python Evaluates the Condition
+
+Python checks if the condition is `True` or `False`:
+
+```python
+x = 10
+
+# Condition is True → block RUNS
+if x > 5:
+    print("x is greater than 5")    # ✅ This runs
+
+# Condition is False → block is SKIPPED
+if x > 20:
+    print("x is greater than 20")   # ❌ This is skipped
+
+print("Done.")   # Always runs
+```
+
+**Step-by-step thinking:**
+
+```
+x = 10
+Is x > 5?  →  Is 10 > 5?  →  True  →  Run the block ✅
+Is x > 20? →  Is 10 > 20? →  False →  Skip the block ❌
+```
+
+::: {.callout-tip}
+## 💡 Think like Python
+Always ask: "Is this condition True or False right now?"
+:::
+
+## Multiple Statements in an `if` Block
+
+You can put multiple lines inside one `if`:
+
+```python
+score = 92
+
+if score >= 90:
+    print("Grade: A")
+    print("Excellent work!")
+    print("You are in the top class.")
+
+# All three lines only run if score >= 90
+```
+
+**Another example:**
+
+```python
+balance = 500
+withdrawal = 200
+
+if withdrawal <= balance:
+    balance = balance - withdrawal
+    print("Withdrawal successful!")
+    print(f"New balance: ${balance}")
+
+print("Thank you for using our ATM.")
+```
+
+::: {.callout-note}
+## 📌 Remember
+All lines at the same indentation level belong to the same block.
+:::
+
+## Practice 1A — Write Your First `if` Statement
+
+**Task:** Write a program that:
+1. Stores a temperature value
+2. Prints a message if the temperature is above 37 (fever)
+
+```python
+# Your solution here:
+temperature = 38.5
+
+if temperature > 37:
+    print("Warning: You may have a fever!")
+    print(f"Your temperature is {temperature}°C")
+
+print("Check complete.")
+```
+
+**Try changing the temperature to 36.5 — what happens?**
+
+::: {.callout-tip}
+## 💡 Exercise
+Change `temperature` to different values and observe the output. What is the exact boundary?
+:::
+
+## Practice 1B — Age Checker
+
+```python
+# Program: Check if someone can vote
+age = 20
+
+if age >= 18:
+    print("You are eligible to vote.")
+    print("Please register at your local office.")
+
+print("Thank you for using the voter check system.")
+```
+
+**Now try these scenarios:**
+
+| age value | What prints? |
+|-----------|--------------|
+| `age = 20` | Both lines inside + Thank you |
+| `age = 18` | Both lines inside + Thank you |
+| `age = 17` | Only Thank you |
+| `age = 5`  | Only Thank you |
+
+::: {.callout-note}
+## 🔍 Observe
+The boundary `>= 18` includes exactly 18. Age 18 is allowed!
+:::
+
+---
+
+# Part 2: The `else` Statement
+
+## What is `else`?
+
+::: {style="text-align:center; margin-top: 30px;"}
+### `else` runs when the `if` condition is **False** {style="color: #2980b9; font-size: 1.4em;"}
+
+It is the "otherwise" option.
+:::
+
+**Real-life thinking:**
+
+- If it is raining → bring umbrella. **Otherwise** → wear sunglasses.
+- If score >= 50 → you pass. **Otherwise** → you fail.
+- If username is correct → log in. **Otherwise** → show error.
+
+```python
+score = 45
+
+if score >= 50:
+    print("You passed!")
+else:
+    print("You failed. Please try again.")
+```
+
+::: {.callout-important}
+## 🎯 Key Point
+Either the `if` block runs, OR the `else` block runs. **Never both. Never neither.**
+:::
+
+## Syntax of `if...else`
+
+```python
+if condition:
+    # runs when condition is True
+    code_block_A
+else:
+    # runs when condition is False
+    code_block_B
+```
+
+**Important rules:**
+
+- `else` has NO condition — it is the "everything else" case
+- `else` must be at the same indentation as `if`
+- `else` also ends with a **colon** `:`
+- The body of `else` must be indented
+
+```python
+temperature = 22
+
+if temperature > 30:
+    print("It is hot!")
+else:
+    print("The weather is comfortable.")
+```
+
+::: {.callout-tip}
+## 💡 Think of it as a fork in the road
+`if` takes the left path, `else` takes the right path. You always take one.
+:::
+
+## Visualizing if...else Flow
+
+```
+         Start
+           │
+           ▼
+     [Check condition]
+           │
+     ┌─────┴─────┐
+   True         False
+     │             │
+     ▼             ▼
+  [if block]   [else block]
+     │             │
+     └─────┬─────┘
+           │
+           ▼
+     Continue...
+```
+
+```python
+password = "hello123"
+
+if password == "secret":
+    print("Access granted!")
+else:
+    print("Wrong password. Access denied.")
+
+print("Program ended.")   # Always runs after
+```
+
+## Multiple Lines in if...else
+
+Both blocks can have multiple statements:
+
+```python
+marks = 72
+
+if marks >= 50:
+    print("Result: PASS ✅")
+    print(f"Your score: {marks}/100")
+    print("Congratulations! You may proceed.")
+else:
+    print("Result: FAIL ❌")
+    print(f"Your score: {marks}/100")
+    print("You need to retake the exam.")
+
+print("---")
+print("End of result.")
+```
+
+::: {.callout-note}
+## 📌 Both branches can have different amounts of code
+The `if` block can have 1 line, the `else` block can have 5 lines — or vice versa.
+:::
+
+## Practice 2A — Pass or Fail
+
+**Task:** Write a program that checks if a student passes or fails.
+
+```python
+# Passing score is 50 or above
+score = int(input("Enter your score: "))
+
+if score >= 50:
+    print("🎉 Congratulations! You PASSED.")
+    print(f"Your score: {score}/100")
+else:
+    print("😢 Sorry, you FAILED.")
+    print(f"Your score: {score}/100")
+    print("Minimum passing score is 50.")
+```
+
+**Test with these inputs:**
+
+| Input | Expected Output |
+|-------|----------------|
+| `85`  | PASSED |
+| `50`  | PASSED (boundary!) |
+| `49`  | FAILED |
+| `0`   | FAILED |
+
+## Practice 2B — Even or Odd
+
+**Using the modulo operator from last class:**
+
+```python
+number = int(input("Enter a number: "))
+
+if number % 2 == 0:
+    print(f"{number} is an EVEN number.")
+else:
+    print(f"{number} is an ODD number.")
+```
+
+::: {.callout-tip}
+## 💡 How it works
+`number % 2` gives the remainder when dividing by 2.
+- Even numbers: remainder is `0`
+- Odd numbers: remainder is `1`
+:::
+
+**Try:** 4, 7, 0, 13, 100
+
+## Practice 2C — Positive or Negative
+
+```python
+num = float(input("Enter a number: "))
+
+if num >= 0:
+    print(f"{num} is a positive number (or zero).")
+else:
+    print(f"{num} is a negative number.")
+```
+
+**Mini Challenge:** Modify the program to also say "You entered zero!" when `num == 0`.
+
+*Hint: Can you use a second `if` inside the `if` block?*
+
+---
+
+# Part 3: The `elif` Statement
+
+## The Problem with Only if...else
+
+What if there are **more than two** possible outcomes?
+
+```python
+score = 75
+
+# ❌ This approach is messy and incorrect logic
+if score >= 90:
+    print("Grade: A")
+if score >= 80:
+    print("Grade: B")   # 75 doesn't match, but 90+ would print BOTH A and B!
+if score >= 70:
+    print("Grade: C")
+```
+
+::: {.callout-warning}
+## ⚠️ Problem
+Using multiple separate `if` statements means ALL conditions are checked independently. A score of 95 would print A, B, AND C — that's wrong!
+:::
+
+**Solution:** Use `elif` to create a **chain** of conditions.
+
+## What is `elif`?
+
+::: {style="text-align:center; margin-top: 30px;"}
+### `elif` = "else if" — check another condition only if the previous was False {style="color: #2980b9; font-size: 1.4em;"}
+:::
+
+```python
+if condition1:
+    # runs if condition1 is True
+elif condition2:
+    # runs if condition1 is False AND condition2 is True
+elif condition3:
+    # runs if condition1 and condition2 are False AND condition3 is True
+else:
+    # runs if ALL conditions above are False
+```
+
+::: {.callout-important}
+## 🎯 Key Rule
+Python checks conditions **top to bottom** and **stops at the first True one**.
+Only ONE block ever runs.
+:::
+
+## Syntax: if...elif...else
+
+```python
+score = 75
+
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+elif score >= 70:
+    print("Grade: C")
+elif score >= 60:
+    print("Grade: D")
+else:
+    print("Grade: F")
+
+# Output: Grade: C
+```
+
+**Step-by-step trace:**
+
+```
+Is score >= 90? → Is 75 >= 90? → False → skip
+Is score >= 80? → Is 75 >= 80? → False → skip
+Is score >= 70? → Is 75 >= 70? → True  → Print "Grade: C" ✅ STOP
+```
+
+## Visualizing elif Flow
+
+```
+         Start
+           │
+           ▼
+     [condition1?]
+           │
+     ┌─────┴─────┐
+   True         False
+     │             │
+     ▼             ▼
+  [block1]   [condition2?]
+     │         ┌──┴──┐
+     │       True   False
+     │         │       │
+     │      [block2] [condition3?]
+     │         │      ┌──┴──┐
+     │         │    True   False
+     │         │      │       │
+     │         │  [block3]  [else]
+     └──┬──────┘      │       │
+        └─────────────┴───────┘
+                      │
+                      ▼
+                  Continue...
+```
+
+## How Order Matters in elif
+
+The **order** of your conditions is critical!
+
+```python
+score = 95
+
+# ✅ CORRECT ORDER — most restrictive first
+if score >= 90:
+    print("A")       # 95 >= 90 → True → prints A, stops here ✅
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+
+# ❌ WRONG ORDER — least restrictive first
+if score >= 70:
+    print("C")       # 95 >= 70 → True → prints C! Wrong! ❌
+elif score >= 80:
+    print("B")       # Never reached for score 95
+elif score >= 90:
+    print("A")       # Never reached for score 95
+```
+
+::: {.callout-warning}
+## ⚠️ Always order from MOST specific to LEAST specific
+For ranges: put the highest threshold first (or lowest, depending on direction).
+:::
+
+## elif Without else
+
+`else` is **optional**. You can have `if...elif` without a final `else`:
+
+```python
+day = "Saturday"
+
+if day == "Saturday":
+    print("Weekend! Sleep in. 😴")
+elif day == "Sunday":
+    print("Weekend! Relax. ☀️")
+
+# If day is Monday-Friday: nothing prints
+print("Have a good day!")
+```
+
+::: {.callout-note}
+## 💡 When to skip `else`
+Skip `else` when it is acceptable to do nothing if no condition matches.
+Include `else` when you need a guaranteed fallback action.
+:::
+
+## Practice 3A — Grade Calculator
+
+**Write a full grade calculator:**
+
+```python
+score = int(input("Enter your exam score (0-100): "))
+
+if score >= 90:
+    grade = "A"
+    remark = "Excellent!"
+elif score >= 80:
+    grade = "B"
+    remark = "Very Good!"
+elif score >= 70:
+    grade = "C"
+    remark = "Good"
+elif score >= 60:
+    grade = "D"
+    remark = "Satisfactory"
+elif score >= 50:
+    grade = "E"
+    remark = "Pass"
+else:
+    grade = "F"
+    remark = "Fail — Please retake"
+
+print(f"Score: {score}/100")
+print(f"Grade: {grade}")
+print(f"Remark: {remark}")
+```
+
+## Practice 3A — Test Cases
+
+Test your grade calculator with these values:
+
+| Score | Expected Grade | Expected Remark |
+|-------|---------------|-----------------|
+| 95    | A | Excellent! |
+| 83    | B | Very Good! |
+| 75    | C | Good |
+| 62    | D | Satisfactory |
+| 55    | E | Pass |
+| 40    | F | Fail — Please retake |
+| 50    | E | Pass (boundary!) |
+| 90    | A | Excellent! (boundary!) |
+
+::: {.callout-tip}
+## 💡 Always test boundary values
+The exact cutoff points (50, 60, 70, 80, 90) are where mistakes happen!
+:::
+
+## Practice 3B — BMI Calculator
+
+**Body Mass Index (BMI) = weight(kg) / height(m)²**
+
+```python
+weight = float(input("Enter your weight in kg: "))
+height = float(input("Enter your height in meters: "))
+
+bmi = weight / (height ** 2)
+print(f"\nYour BMI: {bmi:.2f}")
+
+if bmi < 18.5:
+    category = "Underweight"
+    advice = "Consider eating more nutritious food."
+elif bmi < 25.0:
+    category = "Normal weight"
+    advice = "Great! Keep maintaining your lifestyle."
+elif bmi < 30.0:
+    category = "Overweight"
+    advice = "Consider more physical activity."
+else:
+    category = "Obese"
+    advice = "Please consult a healthcare professional."
+
+print(f"Category: {category}")
+print(f"Advice: {advice}")
+```
+
+## Practice 3C — Day Type Checker
+
+```python
+day = input("Enter a day of the week: ").strip().capitalize()
+
+if day == "Saturday" or day == "Sunday":
+    print(f"{day} is a Weekend! 🎉")
+elif day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
+    print(f"{day} is a Weekday. 💼")
+else:
+    print(f"'{day}' is not a valid day name.")
+```
+
+::: {.callout-note}
+## 💡 New trick: `in` operator
+`day in ["Monday", "Tuesday", ...]` checks if `day` matches any item in the list.
+We will study lists in detail later — for now, use it to simplify multiple OR conditions!
+:::
+
+---
+
+# Part 4: Nested `if` Statements
+
+## What is Nesting?
+
+::: {style="text-align:center; margin-top: 30px;"}
+### A **nested `if`** is an `if` statement placed **inside** another `if` statement {style="color: #2980b9; font-size: 1.4em;"}
+:::
+
+**Real-life example:**
+
+- If you have a ticket:
+  - If your seat is in row A → go to the front
+  - Else → go to the back
+- Else → you cannot enter
+
+```python
+has_ticket = True
+seat_row = "A"
+
+if has_ticket:
+    print("Welcome!")
+    if seat_row == "A":
+        print("Please go to the front section.")
+    else:
+        print("Please go to the back section.")
+else:
+    print("Sorry, no ticket — cannot enter.")
+```
+
+::: {.callout-important}
+## 🎯 Key Idea
+The inner `if` only runs if the outer `if` condition is True first.
+:::
+
+## Syntax of Nested if
+
+```python
+if outer_condition:
+    # outer block
+    if inner_condition:
+        # inner block (indented deeper)
+        inner_code
+    else:
+        # inner else block
+        inner_else_code
+else:
+    outer_else_code
+```
+
+**Each level of nesting = 4 more spaces of indentation:**
+
+```python
+age = 20
+has_id = True
+
+if age >= 18:
+    print("Age is valid.")      # 4 spaces
+    if has_id:
+        print("ID confirmed.")  # 8 spaces
+        print("Access granted!")
+    else:
+        print("No ID found. Cannot enter.")
+else:
+    print("Too young. Access denied.")
+```
+
+## Nested if — Step by Step
+
+```python
+username = "admin"
+password = "secret123"
+
+if username == "admin":
+    print("Username correct.")
+    if password == "secret123":
+        print("Password correct.")
+        print("✅ Login successful! Welcome, Admin.")
+    else:
+        print("❌ Wrong password.")
+else:
+    print("❌ Username not found.")
+```
+
+**Trace through different combinations:**
+
+| username | password | Output |
+|----------|----------|--------|
+| `"admin"` | `"secret123"` | Login successful |
+| `"admin"` | `"wrong"` | Wrong password |
+| `"user"` | `"secret123"` | Username not found |
+| `"user"` | `"wrong"` | Username not found |
+
+## Caution: Don't Over-Nest!
+
+Too much nesting makes code hard to read:
+
+```python
+# ❌ Hard to read — too deeply nested
+if condition1:
+    if condition2:
+        if condition3:
+            if condition4:
+                print("Finally!")
+
+# ✅ Better — use and to combine conditions
+if condition1 and condition2 and condition3 and condition4:
+    print("Finally!")
+```
+
+::: {.callout-tip}
+## 💡 Rule of Thumb
+Try not to nest more than 2–3 levels deep. Use `and` / `or` to flatten your logic when possible.
+:::
+
+## Practice 4A — Ticket Price System
+
+```python
+age = int(input("Enter your age: "))
+is_student = input("Are you a student? (yes/no): ").lower()
+
+if age < 5:
+    price = 0
+    category = "Child (Free)"
+elif age <= 12:
+    price = 2.00
+    category = "Child"
+elif age <= 60:
+    if is_student == "yes":
+        price = 3.50
+        category = "Student"
+    else:
+        price = 7.00
+        category = "Adult"
+else:
+    price = 4.00
+    category = "Senior"
+
+print(f"\nCategory: {category}")
+print(f"Ticket Price: ${price:.2f}")
+```
+
+## Practice 4B — Season and Activity
+
+```python
+month = int(input("Enter the month number (1-12): "))
+is_weekend = input("Is it a weekend? (yes/no): ").lower()
+
+if 3 <= month <= 5:
+    season = "Spring 🌸"
+    activity = "Go hiking" if is_weekend == "yes" else "Visit a garden"
+elif 6 <= month <= 8:
+    season = "Summer ☀️"
+    activity = "Go to the beach" if is_weekend == "yes" else "Visit a museum"
+elif 9 <= month <= 11:
+    season = "Autumn 🍂"
+    activity = "Go apple picking" if is_weekend == "yes" else "Read a book"
+else:
+    season = "Winter ❄️"
+    activity = "Go skiing" if is_weekend == "yes" else "Stay home and relax"
+
+print(f"\nSeason: {season}")
+print(f"Suggested activity: {activity}")
+```
+
+::: {.callout-note}
+## 💡 New Syntax: Ternary / Inline if
+`value_if_true if condition else value_if_false` — a shorthand for simple if/else.
+We will explore this more in a moment!
+:::
+
+---
+
+# Part 5: Combining Conditions
+
+## Recap: Logical Operators with if
+
+From last class, we know `and`, `or`, `not`. Now we use them powerfully inside `if` statements:
+
+```python
+age = 25
+income = 3000
+
+# AND: both must be True
+if age >= 18 and income >= 1000:
+    print("You qualify for the loan.")
+
+# OR: at least one must be True
+if age < 18 or income < 500:
+    print("You do not qualify.")
+
+# NOT: reverse the condition
+is_banned = False
+if not is_banned:
+    print("You may access the system.")
+```
+
+::: {.callout-tip}
+## 💡 Natural language mapping
+"If age is at least 18 **and** income is at least 1000" → `age >= 18 and income >= 1000`
+:::
+
+## Using `and` in if Statements
+
+**Both conditions must be True for the block to run:**
+
+```python
+username = input("Username: ")
+password = input("Password: ")
+
+if username == "admin" and password == "1234":
+    print("✅ Login successful!")
+else:
+    print("❌ Invalid credentials.")
+```
+
+**Range checking with `and`:**
+
+```python
+temperature = float(input("Enter temperature (°C): "))
+
+if temperature >= 20 and temperature <= 35:
+    print("🌤️ Comfortable weather for outdoor activities.")
+elif temperature < 20:
+    print("🧥 It is cold. Wear a jacket!")
+else:
+    print("🌡️ It is very hot. Stay in the shade!")
+```
+
+## Using `or` in if Statements
+
+**At least one condition must be True:**
+
+```python
+day = input("Enter today's day: ").capitalize()
+
+if day == "Saturday" or day == "Sunday":
+    print("🎉 It's the weekend! No school today.")
+else:
+    print("📚 It's a weekday. Time to study!")
+```
+
+**Another example:**
+
+```python
+fruit = input("Enter a fruit: ").lower()
+
+if fruit == "apple" or fruit == "pear" or fruit == "cherry":
+    print("That is a pome or stone fruit.")
+elif fruit == "mango" or fruit == "banana":
+    print("That is a tropical fruit.")
+else:
+    print("Unknown fruit category.")
+```
+
+## Using `not` in if Statements
+
+**Reverse a condition:**
+
+```python
+is_logged_in = False
+
+if not is_logged_in:
+    print("Please log in to continue.")
+else:
+    print("Welcome back!")
+```
+
+**Practical use:**
+
+```python
+username = input("Enter username: ")
+banned_users = ["spam", "hacker", "troll"]
+
+if username not in banned_users:
+    print(f"Welcome, {username}!")
+else:
+    print("Your account has been suspended.")
+```
+
+::: {.callout-note}
+## 💡 `not in` operator
+`x not in list` is the opposite of `x in list`. Very readable and natural!
+:::
+
+## Complex Conditions — Parentheses Matter!
+
+```python
+age = 17
+has_parent = True
+has_id = False
+
+# With parentheses — clear logic
+if age >= 18 or (age >= 15 and has_parent):
+    print("You may enter.")
+else:
+    print("Entry not allowed.")
+
+# Without parentheses — confusing!
+# Python evaluates 'and' before 'or', but add parentheses to be explicit
+```
+
+::: {.callout-warning}
+## ⚠️ Precedence Reminder
+`not` → `and` → `or` (same as we learned last class!)
+**Always use parentheses** when mixing `and` and `or` to make your intent clear.
+:::
+
+## Practice 5A — Loan Eligibility
+
+```python
+print("=== Loan Eligibility Checker ===")
+age = int(input("Your age: "))
+income = float(input("Monthly income ($): "))
+credit_score = int(input("Credit score (300–850): "))
+
+if age >= 21 and income >= 2000 and credit_score >= 650:
+    print("\n✅ Congratulations! You are ELIGIBLE for a loan.")
+    max_loan = income * 12
+    print(f"Maximum loan amount: ${max_loan:,.2f}")
+elif age >= 21 and income >= 2000:
+    print("\n⚠️ Partially eligible. Your credit score is too low.")
+    print("Minimum credit score required: 650")
+elif age < 21:
+    print("\n❌ Not eligible. Minimum age is 21.")
+else:
+    print("\n❌ Not eligible. Minimum monthly income is $2,000.")
+```
+
+## Practice 5B — Password Strength Checker
+
+```python
+password = input("Enter a password to check: ")
+
+length_ok = len(password) >= 8
+has_upper = any(c.isupper() for c in password)
+has_lower = any(c.islower() for c in password)
+has_digit = any(c.isdigit() for c in password)
+
+print(f"\nPassword: {password}")
+print(f"Length >= 8: {length_ok}")
+print(f"Has uppercase: {has_upper}")
+print(f"Has lowercase: {has_lower}")
+print(f"Has digit: {has_digit}")
+
+if length_ok and has_upper and has_lower and has_digit:
+    print("\n💪 Strong password!")
+elif length_ok and (has_upper or has_lower) and has_digit:
+    print("\n👍 Medium strength password. Add more variety.")
+else:
+    print("\n⚠️ Weak password! Use at least 8 characters, uppercase, lowercase, and numbers.")
+```
+
+---
+
+# Part 6: Inline if (Ternary Expression)
+
+## Shorthand if...else
+
+For simple one-line decisions, Python has a compact syntax:
+
+```python
+# Normal if...else
+age = 20
+if age >= 18:
+    status = "adult"
+else:
+    status = "minor"
+
+# Equivalent Ternary / Inline if
+status = "adult" if age >= 18 else "minor"
+
+print(status)   # adult
+```
+
+**Syntax:**
+```python
+value = result_if_true if condition else result_if_false
+```
+
+::: {.callout-note}
+## 💡 When to use it
+Use the ternary form when the choice is simple and fits on one readable line.
+For complex logic, always use a full if...else for clarity.
+:::
+
+## Ternary Examples
+
+```python
+# Example 1: Pass/Fail label
+score = 73
+result = "Pass" if score >= 50 else "Fail"
+print(f"Result: {result}")          # Pass
+
+# Example 2: Absolute value
+num = -15
+absolute = num if num >= 0 else -num
+print(f"Absolute value: {absolute}")  # 15
+
+# Example 3: Max of two numbers
+a, b = 10, 25
+maximum = a if a > b else b
+print(f"Maximum: {maximum}")         # 25
+
+# Example 4: Greeting
+hour = 14
+greeting = "Good morning" if hour < 12 else "Good afternoon"
+print(greeting)                      # Good afternoon
+```
+
+## Practice 6A — Quick Decisions
+
+```python
+# Practice: Write each as a ternary expression
+
+# 1. Number sign
+num = int(input("Enter a number: "))
+sign = "positive" if num >= 0 else "negative"
+print(f"{num} is {sign}.")
+
+# 2. Divisible by 5?
+n = int(input("Enter a number: "))
+msg = "divisible by 5" if n % 5 == 0 else "not divisible by 5"
+print(f"{n} is {msg}.")
+
+# 3. Larger number
+x = float(input("Enter x: "))
+y = float(input("Enter y: "))
+larger = x if x > y else y
+print(f"The larger number is: {larger}")
+```
+
+---
+
+# Part 7: Full Practice Projects
+
+## Project 1 — Simple ATM Machine
+
+```python
+print("=" * 35)
+print("    Welcome to PPIU Bank ATM")
+print("=" * 35)
+
+pin = input("Enter your PIN: ")
+
+if pin == "1234":
+    print("\n✅ PIN Accepted!")
+    balance = 1500.00
+    print(f"Current Balance: ${balance:.2f}")
+
+    print("\nSelect transaction:")
+    print("1. Withdraw")
+    print("2. Deposit")
+    choice = input("Enter choice (1 or 2): ")
+
+    if choice == "1":
+        amount = float(input("Enter withdrawal amount: $"))
+        if amount <= 0:
+            print("❌ Invalid amount.")
+        elif amount > balance:
+            print("❌ Insufficient funds.")
+        else:
+            balance -= amount
+            print(f"✅ Withdrew ${amount:.2f}")
+            print(f"New balance: ${balance:.2f}")
+    elif choice == "2":
+        amount = float(input("Enter deposit amount: $"))
+        if amount <= 0:
+            print("❌ Invalid amount.")
+        else:
+            balance += amount
+            print(f"✅ Deposited ${amount:.2f}")
+            print(f"New balance: ${balance:.2f}")
+    else:
+        print("❌ Invalid choice.")
+else:
+    print("❌ Wrong PIN. Card blocked.")
+```
+
+## Project 2 — Traffic Light System
+
+```python
+print("=== Traffic Light Advisor ===")
+light = input("Enter traffic light color (red/yellow/green): ").lower()
+speed = int(input("Enter your current speed (km/h): "))
+
+if light == "green":
+    if speed <= 60:
+        print("✅ Safe to drive. Maintain your speed.")
+    elif speed <= 80:
+        print("⚠️ You are within speed limit but be careful.")
+    else:
+        print("🚨 You are speeding! Slow down immediately.")
+elif light == "yellow":
+    if speed > 20:
+        print("⚠️ Slow down! Light is turning red.")
+    else:
+        print("✅ Good. Prepare to stop.")
+elif light == "red":
+    if speed == 0:
+        print("✅ Correctly stopped at red light.")
+    else:
+        print("🚨 STOP! You must stop at a red light!")
+else:
+    print(f"'{light}' is not a valid traffic light color.")
+```
+
+## Project 3 — Student Report Card
+
+```python
+print("=" * 40)
+print("       PPIU Student Report Card")
+print("=" * 40)
+
+name = input("Student name: ")
+math_score   = int(input("Math score (0-100): "))
+khmer_score  = int(input("Khmer score (0-100): "))
+english_score = int(input("English score (0-100): "))
+
+average = (math_score + khmer_score + english_score) / 3
+
+print(f"\n--- Report for {name} ---")
+print(f"Math:    {math_score}/100")
+print(f"Khmer:   {khmer_score}/100")
+print(f"English: {english_score}/100")
+print(f"Average: {average:.1f}/100")
+
+if average >= 90:
+    grade, remark = "A", "Outstanding 🏆"
+elif average >= 80:
+    grade, remark = "B", "Very Good 🌟"
+elif average >= 70:
+    grade, remark = "C", "Good 👍"
+elif average >= 60:
+    grade, remark = "D", "Satisfactory"
+elif average >= 50:
+    grade, remark = "E", "Pass"
+else:
+    grade, remark = "F", "Needs Improvement"
+
+status = "PROMOTED ✅" if average >= 50 else "RETAINED ❌"
+print(f"\nGrade: {grade}  —  {remark}")
+print(f"Status: {status}")
+```
+
+## Final Challenge — Number Analysis Tool
+
+**Combine everything you've learned:**
+
+```python
+print("=== Number Analyzer ===")
+num = float(input("Enter any number: "))
+
+# Check zero
+if num == 0:
+    print("The number is ZERO.")
+else:
+    # Check positive or negative
+    if num > 0:
+        print(f"{num} is POSITIVE.")
+    else:
+        print(f"{num} is NEGATIVE.")
+
+    # Only check even/odd for whole numbers
+    if num == int(num):
+        num_int = int(num)
+        parity = "EVEN" if num_int % 2 == 0 else "ODD"
+        print(f"It is an {parity} integer.")
+
+        # Check if divisible by 3 and 5
+        if num_int % 3 == 0 and num_int % 5 == 0:
+            print("Divisible by both 3 and 5 (FizzBuzz!).")
+        elif num_int % 3 == 0:
+            print("Divisible by 3.")
+        elif num_int % 5 == 0:
+            print("Divisible by 5.")
+
+        # Range classification
+        abs_num = abs(num_int)
+        if abs_num < 10:
+            size = "single-digit"
+        elif abs_num < 100:
+            size = "two-digit"
+        elif abs_num < 1000:
+            size = "three-digit"
+        else:
+            size = "large (1000+)"
+        print(f"It is a {size} number.")
+    else:
+        print("It is a DECIMAL (float) number.")
+```
+
+---
+
+## Summary: if, elif, else
+
+**What you've learned today:**
+
+| Concept | Purpose | Syntax |
+|---------|---------|--------|
+| `if` | Run code only when True | `if condition:` |
+| `else` | Run code when `if` is False | `else:` |
+| `elif` | Check additional conditions | `elif condition:` |
+| Nested `if` | Decisions within decisions | Indent deeper |
+| Combined conditions | `and`, `or`, `not` | `if a and b:` |
+| Ternary | One-line shorthand | `x if cond else y` |
+
+::: {.callout-important}
+## 🎯 Key Takeaways
+- Python reads conditions **top to bottom** and stops at the **first True**
+- Indentation is **mandatory** — 4 spaces per level
+- Use `elif` (not multiple `if`) when choices are mutually exclusive
+- Use parentheses to make complex conditions clear
+- Test all your **boundary values** (the exact cutoff numbers)!
+:::
+
+## Common Mistakes to Avoid
+
+```python
+# ❌ Mistake 1: Using = instead of ==
+if age = 18:           # SyntaxError!
+if age == 18:          # ✅ Correct
+
+# ❌ Mistake 2: Missing colon
+if age >= 18           # SyntaxError!
+if age >= 18:          # ✅ Correct
+
+# ❌ Mistake 3: Wrong indentation
+if age >= 18:
+print("Adult")         # IndentationError!
+if age >= 18:
+    print("Adult")     # ✅ Correct
+
+# ❌ Mistake 4: elif without if
+elif score >= 80:      # SyntaxError! (no if before it)
+
+# ❌ Mistake 5: else with a condition
+else score < 50:       # SyntaxError! else has no condition
+else:                  # ✅ Correct
+```
+
+## Quick Reference Card
+
+```python
+# Structure 1: if only
+if condition:
+    code
+
+# Structure 2: if...else
+if condition:
+    code_A
+else:
+    code_B
+
+# Structure 3: if...elif...else
+if condition1:
+    code_A
+elif condition2:
+    code_B
+elif condition3:
+    code_C
+else:
+    code_D
+
+# Structure 4: Nested
+if outer:
+    if inner:
+        code_A
+    else:
+        code_B
+
+# Structure 5: Ternary
+result = value_A if condition else value_B
+```
+
+## Next Class
+
+Next class we will learn about **loops** — repeating actions with `for` and `while`!
+
+::: {.callout-tip}
+## 🚀 Get Ready
+Loops + Conditions = Real programs that process data, validate input, and solve complex problems!
+
+**Practice at home:** Write a program that asks for a user's age and tells them:
+- What generation they belong to (Gen Z, Millennial, Gen X, Boomer)
+- Whether they are a minor, adult, or senior
+- What discounts they qualify for
+:::
